@@ -1,0 +1,13 @@
+MSMF v2.2 Update Information
+
+*Updated framework to Unity 5.5.1f1
+*Light Maintenance including fixing outdated code
+*Commented out collection button in the lobby scene due to incompatibility on mobile
+*Fixed bonus pick bug on builds
+
+
+MSMF v2.1 Update Information
+
+*Updated framework to work with Unity 5.1
+*Light Maintenance including fixing outdated code
+*Added simple collection button in the lobby scene
