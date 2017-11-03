@@ -18,12 +18,6 @@ public var lockSize : Vector2;
 //Where on the button will our lock picture be placed
 public var lockOffset : Vector2;
 
-//How much we will collect each time
-//public var collectionAmount : float;
-
-//How many hours between each collection
-//public var hoursBetweenCollection : int;
-
 //User Data that is instanted in the scene
  var userData : GameObject;
 
@@ -32,26 +26,9 @@ private var menuNumber : int;
 private var pageOffset : float;
 private var pageNumber : float;
 
-//Last time and date that we collected
-//private var lastCollection : long;
-//private var lastCollectionDT : System.DateTime;
-
-
 //////////This information is called before anything else in the scene//////////
 function Start()
 {
-    /*
-	if(!PlayerPrefs.HasKey("LastCollection")) PlayerPrefs.SetString("LastCollection", "0");
-	lastCollection = System.Int64.Parse(PlayerPrefs.GetString("LastCollection"));
-	if(lastCollection == 0)
-	{
-		var collectTime : System.DateTime = new System.DateTime();
-		lastCollection = collectTime.ToBinary();
-		PlayerPrefs.SetString("LastCollection", lastCollection.ToString());
-	}
-	lastCollectionDT = System.DateTime.FromBinary(lastCollection);
-	*/
-	
 	userData = GameObject.FindWithTag("Player");
 	//If we do not have a user data object already in the scene
 	if(userData == null)
@@ -66,31 +43,6 @@ function Start()
 function OnGUI()
 {
 	GUI.skin = menuSkin;
-	
-    /*
-	if(userData)
-	{
-		var collectionTime : System.DateTime;
-		var timeDeduction = System.DateTime.Now - lastCollectionDT;
-		if(timeDeduction.TotalHours >= hoursBetweenCollection)
-		{
-			GUI.color = Color.white;
-			if(GUI.Button(Rect(10, Screen.height - 100, 150, 75), "Collect"))
-			{
-				lastCollectionDT = System.DateTime.Now;
-				lastCollection = lastCollectionDT.ToBinary();
-				PlayerPrefs.SetString("LastCollection", lastCollection.ToString());
-				userData.GetComponent.<UserData>().AddCoins(collectionAmount, false, 0);
-			}
-		}
-		else
-		{
-			GUI.color = Color.gray;
-			GUI.Button(Rect(10, Screen.height - 100, 150, 75), GetTimeStamp(timeDeduction));
-		}
-	}
-	GUI.color = Color.white;
-    */
 	
 	//If we have any level information
 	if(slotData.Length > 0)
@@ -173,22 +125,6 @@ function OnGUI()
 		}
 	}
 }
-
-/*
-//Take the current time span and turn into a custom string to be displayed
-function GetTimeStamp(timeDeduction : System.TimeSpan)
-{
-	var second : int = 59 - timeDeduction.Seconds;
-	var minute : int = 59 - timeDeduction.Minutes;
-	var hour : int = 1 - timeDeduction.Hours;
-	var timeStamp : String = "0" + hour.ToString();
-	if(minute < 10) timeStamp += " : 0" + minute.ToString();
-	else timeStamp += " : " + minute.ToString();
-	if(second < 10) timeStamp += " : 0" + second.ToString();
-	else timeStamp += " : " + second.ToString();
-	return timeStamp;
-}
-*/
 
 //This lets us see our GUI without having to press play
 @script ExecuteInEditMode()
